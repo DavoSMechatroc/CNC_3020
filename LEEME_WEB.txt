@@ -1,0 +1,54 @@
+============================================================
+ CONTROL POS WEB · NTT DATA  ·  Publicar en GitHub Pages
+============================================================
+
+Tienes un solo archivo: index.html (con el logo y el robot ya
+incrustados dentro). No necesitas nada más.
+
+REQUISITO PARA USARLO
+---------------------
+- Abrirlo en Microsoft Edge o Google Chrome (NO Firefox/Safari).
+- Abrirlo desde el link https:// de GitHub Pages (no como archivo suelto),
+  porque el navegador solo permite usar el puerto USB desde páginas https.
+
+PUBLICARLO EN GITHUB PAGES (sin saber de git, todo por la web)
+--------------------------------------------------------------
+1. Entra a github.com e inicia sesión.
+2. Crea un repositorio nuevo (botón "New"):
+   - Nombre: por ejemplo  controlpos
+   - Visibilidad: Public  (Pages gratis requiere repo público)
+   - Crea el repositorio.
+3. Dentro del repo: "Add file" -> "Upload files".
+   - Arrastra el archivo index.html.
+   - Abajo pulsa "Commit changes".
+4. Ve a la pestaña "Settings" del repo -> menú lateral "Pages".
+   - En "Source" elige: "Deploy from a branch".
+   - Branch: main   /   carpeta: / (root)   -> "Save".
+5. Espera 1-2 minutos y recarga esa página de Pages.
+   Te mostrará tu link, algo como:
+       https://TU-USUARIO.github.io/controlpos/
+6. Abre ese link en Edge -> "CONECTAR" -> elige el puerto de la CNC.
+
+USO
+---
+- CONECTAR: el navegador muestra una ventanita para elegir el puerto.
+- Botones (HOME, HOME CÁMARA, INSERTAR/CONTACLESS/RETRAER) y el keypad PIN
+  funcionan igual que en la versión de escritorio.
+- PARO: botón rojo de emergencia (feed-hold + soft-reset).
+- CONFIGURACIÓN: edita comandos y coordenadas; "Guardar" los conserva en
+  ese navegador (localStorage).
+
+VENTAJAS
+--------
+- No es un .exe: no lo bloquean las políticas corporativas.
+- Para actualizarlo a todos a la vez, solo subes un index.html nuevo al
+  repo (mismos pasos del punto 3) y el link queda actualizado.
+
+NOTAS
+-----
+- En cuenta gratuita el repo es público (cualquiera con el link ve la
+  página). Aquí no hay datos sensibles, pero valídalo con tu política.
+- Si más adelante IT te da un hosting interno por HTTPS, subir ahí el mismo
+  index.html funciona igual.
+- La configuración se guarda por navegador; si quieres que un compañero
+  tenga tu misma config, que la ajuste una vez en su Edge y le dé Guardar.
