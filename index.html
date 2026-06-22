@@ -118,9 +118,68 @@
 
   footer{background:var(--panel2); color:var(--muted); font-size:12px; padding:6px 20px;}
 
+  /* ---- Calibración manual ---- */
+  .grid-calib{display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:auto auto;
+    gap:16px; align-items:stretch;}
+  .calib-gen{grid-column:1 / -1;}
+  .calib-card{min-width:0;}
+  .calib-legend{margin-top:10px; font-size:11px; color:var(--muted); display:flex; align-items:center; gap:6px;}
+  .calib-legend .dot{width:9px; height:9px; border-radius:50%; background:var(--ok); display:inline-block;}
+  .keypad .k{position:relative;}
+  .keypad .k.selected{outline:3px solid var(--accent); outline-offset:-3px;}
+  .keypad .k .savedot{position:absolute; top:7px; right:7px; width:9px; height:9px; border-radius:50%; background:var(--ok);}
+  .jog-opts{display:flex; align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap;}
+  .jog-opts label{font-size:12px; color:var(--muted);}
+  .jog-opts select{background:var(--btn); color:var(--text); border:1px solid var(--border);
+    border-radius:8px; padding:6px 8px; font-family:inherit; font-size:13px;}
+  .jog-area{display:flex; justify-content:space-around; align-items:center; gap:10px; margin-bottom:16px;}
+  .dpad{display:grid; grid-template-columns:repeat(3,56px); grid-template-rows:repeat(3,56px); gap:8px;}
+  .dpad .yp{grid-column:2; grid-row:1;} .dpad .xm{grid-column:1; grid-row:2;}
+  .dpad .ctr{grid-column:2; grid-row:2;} .dpad .xp{grid-column:3; grid-row:2;} .dpad .ym{grid-column:2; grid-row:3;}
+  .zpad{display:flex; flex-direction:column; gap:8px; align-items:center;}
+  .zpad .zlabel{font-size:11px; color:var(--muted);}
+  .jbtn{width:56px; height:56px; border:1px solid var(--border); background:var(--key); color:var(--text);
+    border-radius:12px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:background .12s;}
+  .jbtn:hover{background:var(--key-hv);} .jbtn.ctr{background:var(--panel2); cursor:default;}
+  .dro-sel{font-size:13px; color:var(--muted); margin-bottom:10px;} .dro-sel b{color:var(--accent);}
+  .dro{background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:14px 18px;}
+  .dro-row{display:flex; justify-content:space-between; align-items:center; padding:6px 0;}
+  .dro-row .ax{font-family:Consolas,monospace; font-size:26px; font-weight:700; color:var(--muted);}
+  .dro-row .val{font-family:Consolas,monospace; font-size:30px; font-weight:700; color:var(--accent);}
+  .dro-meta{margin-top:10px; font-size:12px; color:var(--muted);}
+  .hint{font-size:11px; color:var(--muted); margin-top:14px; line-height:1.5;}
+  .gen-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px;}
+  #genstatus{font-size:12px; color:var(--ok);}
+  #genbox{width:100%; min-height:150px; background:var(--panel2); color:var(--rx); border:1px solid var(--border);
+    border-radius:8px; padding:10px; font-family:Consolas,monospace; font-size:13px; resize:vertical;}
+
+  .opt-row{display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:13px; color:var(--text);}
+  .opt-row input[type=checkbox]{width:18px; height:18px; accent-color:var(--accent); cursor:pointer;}
+  .opt-row input[type=number]{width:80px; background:var(--panel2); color:var(--text); border:1px solid var(--border);
+    border-radius:8px; padding:6px 8px; font-family:inherit; font-size:13px;}
+  .opt-hint{font-size:11px; color:var(--muted); margin-top:8px; line-height:1.5;}
+  .var-create{display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap;}
+  .var-create label{font-size:12px; color:var(--muted);}
+  .var-create input{flex:1; min-width:120px; background:var(--panel2); color:var(--text);
+    border:1px solid var(--border); border-radius:8px; padding:8px; font-family:Consolas,monospace; font-size:13px;}
+  .var-listlabel{font-size:11px; color:var(--muted); margin-bottom:8px;}
+  .var-list{display:flex; flex-direction:column; gap:8px; max-height:230px; overflow:auto;}
+  .var-row{display:flex; align-items:center; justify-content:space-between; gap:8px;
+    background:var(--panel2); border:1px solid var(--border); border-radius:8px; padding:8px 10px; cursor:pointer;}
+  .var-row.selected{outline:2px solid var(--accent); outline-offset:-2px;}
+  .var-row .vinfo{min-width:0; overflow:hidden;}
+  .var-row .vname{font-family:Consolas,monospace; font-size:13px; color:var(--text);}
+  .var-row .vcoord{font-size:11px; color:var(--muted);}
+  .var-row .vdel{background:none; border:none; color:var(--muted); cursor:pointer; font-size:15px; flex-shrink:0;}
+  .var-row .vdel:hover{color:var(--warn);}
+  .var-empty{font-size:12px; color:var(--muted); padding:8px;}
+  #varGenBox{width:100%; min-height:150px; background:var(--panel2); color:var(--rx); border:1px solid var(--border);
+    border-radius:8px; padding:10px; font-family:Consolas,monospace; font-size:13px; resize:vertical;}
+
   @media (max-width:900px){
     .grid-main{grid-template-columns:1fr; height:auto;}
     .grid-cfg{grid-template-columns:1fr;}
+    .grid-calib{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -146,6 +205,8 @@
 <div class="tabs">
   <div class="tab active" data-tab="main">MAIN</div>
   <div class="tab" data-tab="cfg">CONFIGURACIÓN</div>
+  <div class="tab" data-tab="calib">CALIBRACIÓN MANUAL</div>
+  <div class="tab" data-tab="vars">VARIABLES</div>
 </div>
 
 <main>
@@ -193,6 +254,18 @@
     <div class="grid-cfg">
       <div class="col">
         <div class="card">
+          <h2>OPCIONES</h2>
+          <label class="opt-row">
+            <input type="checkbox" id="optPusher">
+            <span>Actuar como pulsador</span>
+          </label>
+          <div class="opt-row">
+            <span>Retracción Z (mm):</span>
+            <input type="number" id="optRetract" value="5" step="0.5" min="0">
+          </div>
+          <p class="opt-hint">Con esto activado, al ir a una coordenada (teclas del Main, o "Ir a posición" en Calibración y Variables) primero mueve X/Y, baja a la Z guardada y luego sube esa retracción, simulando una pulsación.</p>
+        </div>
+        <div class="card">
           <h2>BOTONES BÁSICOS</h2>
           <div class="cfgrow"><label>HOME</label><textarea id="cmd-HOME" rows="2"></textarea></div>
           <div class="cfgrow"><label>HOME CÁMARA</label><input id="cmd-HOME CAMARA"></div>
@@ -214,6 +287,131 @@
         <span id="cfgstatus"></span>
         <button class="pill" id="btnReset">RESTAURAR VALORES</button>
         <button class="pill accent" id="btnSave">GUARDAR CONFIGURACIÓN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE CALIBRACIÓN MANUAL ===== -->
+  <div class="page" id="page-calib">
+    <div class="grid-calib">
+      <!-- 1 selector -->
+      <div class="card calib-card">
+        <h2>1 · SELECCIONA LA TECLA A CALIBRAR</h2>
+        <div class="keypad" id="calibSelector"></div>
+        <div class="calib-legend"><span class="dot"></span> recalibrada en esta sesión</div>
+      </div>
+      <!-- 2 jog -->
+      <div class="card calib-card">
+        <h2>2 · AJUSTE MANUAL (JOG)</h2>
+        <div class="jog-opts">
+          <label>Paso (mm):</label>
+          <select id="calStep" class="jstep"><option>0.1</option><option selected>1</option><option>5</option><option>10</option></select>
+          <label>Vel:</label>
+          <select id="calFeed" class="jfeed"><option>200</option><option>500</option><option selected>1000</option><option>2000</option></select>
+        </div>
+        <div class="jog-area">
+          <div class="dpad">
+            <button class="jbtn yp" data-axis="Y" data-dir="1">Y+</button>
+            <button class="jbtn xm" data-axis="X" data-dir="-1">X-</button>
+            <button class="jbtn ctr">XY</button>
+            <button class="jbtn xp" data-axis="X" data-dir="1">X+</button>
+            <button class="jbtn ym" data-axis="Y" data-dir="-1">Y-</button>
+          </div>
+          <div class="zpad">
+            <span class="zlabel">Altura</span>
+            <button class="jbtn" data-axis="Z" data-dir="1">Z+</button>
+            <button class="jbtn" data-axis="Z" data-dir="-1">Z-</button>
+          </div>
+        </div>
+        <button class="pill" id="btnGoto" style="width:100%;margin-bottom:8px;">IR A POSICIÓN GUARDADA</button>
+        <button class="opbtn" id="btnSavePos" style="background:var(--accent);color:#08121C;border-color:var(--accent);margin:0;">GUARDAR POSICIÓN</button>
+      </div>
+      <!-- 3 DRO -->
+      <div class="card calib-card">
+        <h2>3 · POSICIÓN EN VIVO</h2>
+        <div class="dro-sel">Tecla seleccionada: <b id="droSel">—</b></div>
+        <div class="dro">
+          <div class="dro-row"><span class="ax">X</span><span class="val" id="dro-x">—</span></div>
+          <div class="dro-row"><span class="ax">Y</span><span class="val" id="dro-y">—</span></div>
+          <div class="dro-row"><span class="ax">Z</span><span class="val" id="dro-z">—</span></div>
+        </div>
+        <div class="dro-meta">Estado: <span id="dro-state">—</span> &nbsp; Unidades: mm</div>
+        <p class="hint">Mueve con las flechas; el número se actualiza en vivo. Cuando esté perfecto, pulsa GUARDAR POSICIÓN.</p>
+      </div>
+      <!-- 4 generar -->
+      <div class="card calib-gen">
+        <h2>4 · GENERAR COORDENADAS</h2>
+        <div class="gen-actions">
+          <button class="pill accent" id="btnGen">GENERAR COORDENADAS</button>
+          <button class="pill" id="btnCopy">Copiar</button>
+          <button class="pill" id="btnDownload">Descargar .txt</button>
+          <button class="pill" id="btnApply">Aplicar a Config</button>
+          <span id="genstatus"></span>
+        </div>
+        <textarea id="genbox" spellcheck="false" readonly></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE VARIABLES ===== -->
+  <div class="page" id="page-vars">
+    <div class="grid-calib">
+      <div class="card calib-card">
+        <h2>1 · CREAR / SELECCIONAR VARIABLE</h2>
+        <div class="var-create">
+          <label>Nombre:</label>
+          <input id="varName" placeholder="BOTON_CUOTAS" spellcheck="false">
+          <button class="pill accent" id="btnVarCreate">Crear / Seleccionar</button>
+        </div>
+        <div class="var-listlabel">Variables creadas:</div>
+        <div class="var-list" id="varList"></div>
+        <button class="pill" id="btnVarGoto" style="width:100%;margin-top:10px;">IR A COORDENADA GUARDADA</button>
+      </div>
+      <div class="card calib-card">
+        <h2>2 · AJUSTE MANUAL (JOG)</h2>
+        <div class="jog-opts">
+          <label>Paso (mm):</label>
+          <select class="jstep"><option>0.1</option><option selected>1</option><option>5</option><option>10</option></select>
+          <label>Vel:</label>
+          <select class="jfeed"><option>200</option><option>500</option><option selected>1000</option><option>2000</option></select>
+        </div>
+        <div class="jog-area">
+          <div class="dpad">
+            <button class="jbtn yp" data-axis="Y" data-dir="1">Y+</button>
+            <button class="jbtn xm" data-axis="X" data-dir="-1">X-</button>
+            <button class="jbtn ctr">XY</button>
+            <button class="jbtn xp" data-axis="X" data-dir="1">X+</button>
+            <button class="jbtn ym" data-axis="Y" data-dir="-1">Y-</button>
+          </div>
+          <div class="zpad">
+            <span class="zlabel">Altura</span>
+            <button class="jbtn" data-axis="Z" data-dir="1">Z+</button>
+            <button class="jbtn" data-axis="Z" data-dir="-1">Z-</button>
+          </div>
+        </div>
+        <button class="opbtn" id="btnSaveVar" style="background:var(--accent);color:#08121C;border-color:var(--accent);margin:0;">GUARDAR POSICIÓN</button>
+      </div>
+      <div class="card calib-card">
+        <h2>3 · POSICIÓN EN VIVO</h2>
+        <div class="dro-sel">Variable activa: <b id="varActive">—</b></div>
+        <div class="dro">
+          <div class="dro-row"><span class="ax">X</span><span class="val" id="dro2-x">—</span></div>
+          <div class="dro-row"><span class="ax">Y</span><span class="val" id="dro2-y">—</span></div>
+          <div class="dro-row"><span class="ax">Z</span><span class="val" id="dro2-z">—</span></div>
+        </div>
+        <div class="dro-meta">Estado: <span id="dro2-state">—</span> &nbsp; Unidades: mm</div>
+        <p class="hint">Escribe el nombre, créalo, ubícalo con las flechas y pulsa GUARDAR POSICIÓN. Los espacios se cambian por "_".</p>
+      </div>
+      <div class="card calib-gen">
+        <h2>4 · EXPORTAR COORDENADAS (incluye PIN + tus variables)</h2>
+        <div class="gen-actions">
+          <button class="pill accent" id="btnVarGen">GENERAR COORDENADAS</button>
+          <button class="pill" id="btnVarCopy">Copiar</button>
+          <button class="pill" id="btnVarDownload">Descargar .txt</button>
+          <button class="pill" id="btnVarApply">Aplicar a Config</button>
+          <span id="varGenStatus"></span>
+        </div>
+        <textarea id="varGenBox" spellcheck="false" readonly></textarea>
       </div>
     </div>
   </div>
@@ -254,20 +452,39 @@ const KEY_ALIASES = {
 };
 
 let commands = {}, pinText = "", pinCoords = {};
+let pusherMode=false, pusherRetract=5;   // "actuar como pulsador"
 let port=null, writer=null, reader=null, connected=false, keepReading=false;
+// --- Calibración manual ---
+let currentWork={x:0,y:0,z:0}, lastWCO=[0,0,0], lastState="—";
+let selectedKey=null, calibValues={}, savedKeys=new Set();
+// --- Variables personalizadas ---
+let activeVar=null;
+const FIXED_KEYS=new Set(["0","1","2","3","4","5","6","7","8","9","CONTINUAR","CANCELAR"]);
+function customVarNames(){ return Object.keys(pinCoords).filter(k=>!FIXED_KEYS.has(k)); }
+function sanitizeName(s){ return (s||"").trim().replace(/\s+/g,"_").replace(/["'\\]/g,""); }
+// label en la UI -> clave en el JSON
+const CALIB_KEYS=[
+  {label:"1",json:"1"},{label:"2",json:"2"},{label:"3",json:"3"},
+  {label:"4",json:"4"},{label:"5",json:"5"},{label:"6",json:"6"},
+  {label:"7",json:"7"},{label:"8",json:"8"},{label:"9",json:"9"},
+  {label:"0",json:"0"},{label:"CANCELAR",json:"CANCELAR"},{label:"ACEPTAR",json:"CONTINUAR"}
+];
+const EXPORT_ORDER=["0","1","2","3","4","5","6","7","8","9","CONTINUAR","CANCELAR"];
+function jsonKeyOf(label){ const e=CALIB_KEYS.find(k=>k.label===label); return e?e.json:label; }
 let okResolver=null;
 
 // ---------- Config (localStorage) ----------
 function loadConfig(){
   try{
     const raw = localStorage.getItem("controlpos_ntt");
-    if(raw){ const d=JSON.parse(raw); commands={...COMMANDS_DEFAULT, ...(d.commands||{})}; pinText=d.pinText||PIN_DEFAULT; }
+    if(raw){ const d=JSON.parse(raw); commands={...COMMANDS_DEFAULT, ...(d.commands||{})}; pinText=d.pinText||PIN_DEFAULT;
+      pusherMode=!!d.pusherMode; if(d.pusherRetract!==undefined) pusherRetract=d.pusherRetract; }
     else { commands={...COMMANDS_DEFAULT}; pinText=PIN_DEFAULT; }
   }catch(e){ commands={...COMMANDS_DEFAULT}; pinText=PIN_DEFAULT; }
   parsePins(pinText, true);
 }
 function saveConfigToStorage(){
-  try{ localStorage.setItem("controlpos_ntt", JSON.stringify({commands, pinText})); }catch(e){}
+  try{ localStorage.setItem("controlpos_ntt", JSON.stringify({commands, pinText, pusherMode, pusherRetract})); }catch(e){}
 }
 function parsePins(text, silent){
   let t=text.trim();
@@ -332,10 +549,38 @@ function handleLine(text){
 function parseStatus(text){
   const inner=text.slice(1,-1).split("|");
   const state=inner[0]; let pos="";
+  let mpos=null, wpos=null, wco=null;
   for(let i=1;i<inner.length;i++){
-    if(inner[i].startsWith("MPos:")||inner[i].startsWith("WPos:")) pos=inner[i].split(":")[1];
+    const p=inner[i];
+    if(p.startsWith("MPos:")){ mpos=p.split(":")[1].split(",").map(Number); pos=p.split(":")[1]; }
+    else if(p.startsWith("WPos:")){ wpos=p.split(":")[1].split(",").map(Number); pos=p.split(":")[1]; }
+    else if(p.startsWith("WCO:")){ wco=p.split(":")[1].split(",").map(Number); }
   }
+  if(wco) lastWCO=wco;
+  // posición de TRABAJO (la que usan los G0): WPos directo, o MPos - WCO
+  let work=null;
+  if(wpos) work=wpos;
+  else if(mpos) work=[mpos[0]-lastWCO[0], mpos[1]-lastWCO[1], mpos[2]-lastWCO[2]];
+  if(work){ currentWork={x:work[0], y:work[1], z:work[2]}; }
+  lastState=state;
   document.getElementById('statusbar').textContent="● "+state+"    Posición: "+pos;
+  updateDRO();
+}
+function updateDRO(){
+  const fx=v=>(v===null||v===undefined)?"—":Number(v).toFixed(3);
+  const live = connected && currentWork;
+  [["dro-x","dro-y","dro-z","dro-state"],["dro2-x","dro2-y","dro2-z","dro2-state"]].forEach(ids=>{
+    const ex=document.getElementById(ids[0]); if(!ex) return;
+    if(live){
+      ex.textContent=fx(currentWork.x);
+      document.getElementById(ids[1]).textContent=fx(currentWork.y);
+      document.getElementById(ids[2]).textContent=fx(currentWork.z);
+      document.getElementById(ids[3]).textContent=lastState||"—";
+    } else {
+      ex.textContent="—"; document.getElementById(ids[1]).textContent="—";
+      document.getElementById(ids[2]).textContent="—"; document.getElementById(ids[3]).textContent="—";
+    }
+  });
 }
 async function writeLine(line){
   log(">> "+line,"tx");
@@ -371,8 +616,8 @@ async function runPin(buttonKey){
   if(!coord && pinCoords[buttonKey]) coord=pinCoords[buttonKey];
   if(!coord){ log("!! No hay coordenada para '"+buttonKey+"'","err"); return; }
   const {xposition:x,yposition:y,zposition:z}=coord;
-  log("== PIN "+buttonKey+" -> X"+x+" Y"+y+" Z"+z+" ==","evt");
-  await runSequence(["G90","G0 X"+x+" Y"+y+" Z"+z]);
+  log("== PIN "+buttonKey+" -> X"+x+" Y"+y+" Z"+z+(pusherMode?" (pulsador)":"")+" ==","evt");
+  await runSequence(moveToCoord(coord));
 }
 async function emergency(){
   if(!connected){ log("!! PARO: no hay conexión","err"); return; }
@@ -396,9 +641,193 @@ function log(msg,type){
 }
 
 // ---------- Status poll ----------
-setInterval(()=>{ if(connected) writeRT(0x3F); }, 800);  // '?'
+setInterval(()=>{ if(connected) writeRT(0x3F); }, 350);  // '?' lectura de estado/posición
 
 // ---------- UI wiring ----------
+// ---------- Calibración manual ----------
+function syncCalibFromConfig(){ calibValues=JSON.parse(JSON.stringify(pinCoords)); }
+function buildCalibSelector(){
+  const grid=document.getElementById('calibSelector'); grid.innerHTML='';
+  [["1","2","3"],["4","5","6"],["7","8","9"]].forEach(row=>row.forEach(k=>grid.appendChild(makeSelKey(k))));
+  grid.appendChild(emptyKey()); grid.appendChild(makeSelKey("0")); grid.appendChild(emptyKey());
+  grid.appendChild(makeSelKey("CANCELAR","cancel")); grid.appendChild(emptyKey()); grid.appendChild(makeSelKey("ACEPTAR","accept"));
+}
+function makeSelKey(label,extra){
+  const b=document.createElement('button'); b.className='k'+(extra?(' '+extra):'');
+  b.dataset.label=label; b.textContent=label; b.onclick=()=>selectCalibKey(label); return b;
+}
+function selectCalibKey(label){
+  selectedKey=label;
+  document.querySelectorAll('#calibSelector .k').forEach(el=>el.classList.toggle('selected', el.dataset.label===label));
+  document.getElementById('droSel').textContent=label;
+}
+function refreshCalibDots(){
+  document.querySelectorAll('#calibSelector .k').forEach(el=>{
+    const lbl=el.dataset.label; if(lbl===undefined) return;
+    let dot=el.querySelector('.savedot');
+    if(savedKeys.has(lbl)){ if(!dot){ dot=document.createElement('span'); dot.className='savedot'; el.appendChild(dot);} }
+    else if(dot){ dot.remove(); }
+  });
+}
+async function jog(axis,dir,btn){
+  if(!requireConn()) return;
+  const card=btn?btn.closest('.card'):null;
+  const stepEl=card?card.querySelector('.jstep'):document.querySelector('.jstep');
+  const feedEl=card?card.querySelector('.jfeed'):document.querySelector('.jfeed');
+  const step=stepEl?stepEl.value:"1", feed=feedEl?feedEl.value:"1000";
+  const dist=(dir<0?'-':'')+step;
+  await writeLine("$J=G91 G21 "+axis+dist+" F"+feed);
+}
+async function gotoSaved(){
+  if(!requireConn()) return;
+  if(!selectedKey){ alert("Selecciona una tecla primero."); return; }
+  const jk=jsonKeyOf(selectedKey); const c=(calibValues[jk]||pinCoords[jk]);
+  if(!c){ log("!! Sin coordenada para "+jk,"err"); return; }
+  log("== IR A "+selectedKey+(pusherMode?" (pulsador)":"")+" ==","evt");
+  await runSequence(moveToCoord(c));
+}
+function savePosition(){
+  if(!selectedKey){ alert("Selecciona una tecla primero."); return; }
+  if(!connected){ alert("Conéctate para leer la posición en vivo."); return; }
+  const jk=jsonKeyOf(selectedKey), r=v=>Math.round(v*1000)/1000;
+  calibValues[jk]={xposition:r(currentWork.x), yposition:r(currentWork.y), zposition:r(currentWork.z)};
+  savedKeys.add(selectedKey); refreshCalibDots();
+  log("== GUARDADO "+selectedKey+" -> X"+r(currentWork.x)+" Y"+r(currentWork.y)+" Z"+r(currentWork.z)+" ==","evt");
+}
+function fmtNum(n){ return Number.isInteger(n)?Number(n).toFixed(1):String(n); }
+// Construye la secuencia de movimiento a una coordenada, según "actuar como pulsador"
+function moveToCoord(c){
+  const x=c.xposition, y=c.yposition, z=c.zposition;
+  if(pusherMode){
+    let ret=parseFloat(pusherRetract); if(isNaN(ret)) ret=5;
+    const zUp=Math.round((Number(z)+ret)*1000)/1000;
+    return ["G90", "G0 X"+x+" Y"+y, "G1 Z"+z+" F800", "G0 Z"+zUp];
+  }
+  return ["G90", "G0 X"+x+" Y"+y+" Z"+z];
+}
+function fmtEntry(k,c){ return '  "'+k+'": { "xposition": '+fmtNum(c.xposition)+', "yposition": '+fmtNum(c.yposition)+', "zposition": '+fmtNum(c.zposition)+' }'; }
+// Serializa TODO: primero teclas PIN en orden, luego variables personalizadas
+function serializeCoords(map){
+  const seen=new Set(); const entries=[];
+  EXPORT_ORDER.forEach(k=>{ if(map[k]){ entries.push(fmtEntry(k,map[k])); seen.add(k); } });
+  Object.keys(map).forEach(k=>{ if(!seen.has(k) && map[k]){ entries.push(fmtEntry(k,map[k])); } });
+  return "{\n"+entries.join(",\n")+"\n}";
+}
+function generateCoords(){
+  const txt=serializeCoords(calibValues);
+  document.getElementById('genbox').value=txt; return txt;
+}
+function copyCoords(){
+  const t=document.getElementById('genbox'); if(!t.value) generateCoords();
+  t.removeAttribute('readonly'); t.select();
+  try{ navigator.clipboard.writeText(t.value); }catch(e){ try{document.execCommand('copy');}catch(_){} }
+  t.setAttribute('readonly',''); genMsg("✔ Copiado al portapapeles.");
+}
+function downloadTxt(){
+  const txt=document.getElementById('genbox').value||generateCoords();
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='coordenadas_pin.txt';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+  genMsg("✔ Descargado coordenadas_pin.txt");
+}
+function applyToConfig(){
+  const txt=document.getElementById('genbox').value||generateCoords();
+  pinText=txt; document.getElementById('pinbox').value=txt;
+  if(parsePins(txt,false)){ saveConfigToStorage(); syncCalibFromConfig(); savedKeys.clear(); refreshCalibDots();
+    genMsg("✔ Aplicado a Configuración y guardado."); }
+}
+function genMsg(m){ const s=document.getElementById('genstatus'); s.textContent=m; setTimeout(()=>{s.textContent="";},4000); }
+
+// ---------- Variables personalizadas ----------
+function persistCoords(){
+  pinText=serializeCoords(pinCoords);
+  const pb=document.getElementById('pinbox'); if(pb) pb.value=pinText;
+  saveConfigToStorage();
+}
+function varMsg(m,color){ const s=document.getElementById('varGenStatus'); s.textContent=m; s.style.color=color||"var(--ok)"; setTimeout(()=>{s.textContent="";},4000); }
+function refreshVarList(){
+  const list=document.getElementById('varList'); if(!list) return;
+  list.innerHTML='';
+  const names=customVarNames();
+  if(names.length===0){ const e=document.createElement('div'); e.className='var-empty'; e.textContent='Aún no has creado variables.'; list.appendChild(e); return; }
+  names.forEach(name=>{
+    const c=pinCoords[name];
+    const row=document.createElement('div'); row.className='var-row'+(name===activeVar?' selected':'');
+    row.onclick=()=>selectVar(name);
+    const info=document.createElement('div'); info.className='vinfo';
+    const nm=document.createElement('div'); nm.className='vname'; nm.textContent=name;
+    const co=document.createElement('div'); co.className='vcoord';
+    co.textContent=c?('X'+c.xposition+'  Y'+c.yposition+'  Z'+c.zposition):'(sin posición guardada)';
+    info.appendChild(nm); info.appendChild(co);
+    const del=document.createElement('button'); del.className='vdel'; del.textContent='🗑'; del.title='Eliminar';
+    del.onclick=(ev)=>{ ev.stopPropagation(); deleteVar(name); };
+    row.appendChild(info); row.appendChild(del); list.appendChild(row);
+  });
+}
+function selectVar(name){
+  activeVar=name;
+  document.getElementById('varName').value=name;
+  document.getElementById('varActive').textContent=name;
+  refreshVarList();
+}
+function createOrSelectVar(){
+  const raw=document.getElementById('varName').value;
+  const name=sanitizeName(raw);
+  if(!name){ alert("Escribe un nombre para la variable."); return; }
+  document.getElementById('varName').value=name;   // muestra el saneado (espacios -> _)
+  if(FIXED_KEYS.has(name)){ varMsg("Ese nombre está reservado para las teclas PIN.","var(--warn)"); return; }
+  if(pinCoords[name]!==undefined){ selectVar(name); varMsg("La variable ya existe — seleccionada para editar.","var(--warn)"); return; }
+  activeVar=name; document.getElementById('varActive').textContent=name;
+  varMsg("Variable nueva: ubícala y pulsa GUARDAR POSICIÓN.");
+}
+function saveVarPosition(){
+  if(!activeVar){
+    const nm=sanitizeName(document.getElementById('varName').value);
+    if(nm && !FIXED_KEYS.has(nm)){ activeVar=nm; document.getElementById('varName').value=nm; document.getElementById('varActive').textContent=nm; }
+  }
+  if(!activeVar){ alert("Escribe o selecciona un nombre de variable primero."); return; }
+  if(!connected){ alert("Conéctate para leer la posición en vivo."); return; }
+  const r=v=>Math.round(v*1000)/1000;
+  const coord={xposition:r(currentWork.x), yposition:r(currentWork.y), zposition:r(currentWork.z)};
+  pinCoords[activeVar]=coord; calibValues[activeVar]=coord;   // en ambos sets
+  persistCoords(); refreshVarList();
+  log("== VARIABLE GUARDADA "+activeVar+" -> X"+coord.xposition+" Y"+coord.yposition+" Z"+coord.zposition+" ==","evt");
+}
+async function gotoVar(){
+  if(!requireConn()) return;
+  if(!activeVar){ alert("Selecciona o crea una variable primero."); return; }
+  const c=pinCoords[activeVar];
+  if(!c){ varMsg("Esa variable aún no tiene posición; ubícala y pulsa Guardar.","var(--muted)"); return; }
+  log("== IR A "+activeVar+(pusherMode?" (pulsador)":"")+" ==","evt");
+  await runSequence(moveToCoord(c));
+}
+function deleteVar(name){
+  if(!confirm('¿Eliminar la variable "'+name+'"?')) return;
+  delete pinCoords[name]; delete calibValues[name];
+  if(activeVar===name){ activeVar=null; document.getElementById('varActive').textContent="—"; document.getElementById('varName').value=""; }
+  persistCoords(); refreshVarList();
+  log("== VARIABLE ELIMINADA "+name+" ==","evt");
+}
+function generateVarCoords(){ const txt=serializeCoords(pinCoords); document.getElementById('varGenBox').value=txt; return txt; }
+function copyVarCoords(){
+  const t=document.getElementById('varGenBox'); if(!t.value) generateVarCoords();
+  t.removeAttribute('readonly'); t.select();
+  try{ navigator.clipboard.writeText(t.value); }catch(e){ try{document.execCommand('copy');}catch(_){} }
+  t.setAttribute('readonly',''); varMsg("✔ Copiado al portapapeles.");
+}
+function downloadVarCoords(){
+  const txt=document.getElementById('varGenBox').value||generateVarCoords();
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='coordenadas_pin.txt';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+  varMsg("✔ Descargado coordenadas_pin.txt");
+}
+function applyVarToConfig(){
+  const txt=generateVarCoords();
+  pinText=txt; document.getElementById('pinbox').value=txt;
+  if(parsePins(txt,false)){ saveConfigToStorage(); syncCalibFromConfig(); varMsg("✔ Aplicado a Configuración y guardado."); }
+}
+
 function buildKeypad(){
   const kp=document.getElementById('keypad');
   const nums=["1","2","3","4","5","6","7","8","9"];
@@ -422,6 +851,16 @@ function fillConfigFields(){
   document.getElementById('cmd-CONTACLESS').value=commands["CONTACLESS"]||"";
   document.getElementById('cmd-RETRAER TARJETA').value=commands["RETRAER TARJETA"]||"";
   document.getElementById('pinbox').value=pinText;
+  applyOptionsUI();
+}
+function applyOptionsUI(){
+  const c=document.getElementById('optPusher'); if(c) c.checked=pusherMode;
+  const r=document.getElementById('optRetract'); if(r) r.value=pusherRetract;
+}
+function readOptionsUI(){
+  pusherMode=document.getElementById('optPusher').checked;
+  let r=parseFloat(document.getElementById('optRetract').value); if(isNaN(r)) r=5;
+  pusherRetract=r;
 }
 function saveConfig(){
   ["HOME","HOME CAMARA","INSERTAR TARJETA","CONTACLESS","RETRAER TARJETA"].forEach(k=>{
@@ -429,29 +868,58 @@ function saveConfig(){
   });
   pinText=document.getElementById('pinbox').value.trim();
   if(!parsePins(pinText,false)) return;
+  readOptionsUI();
   saveConfigToStorage();
+  syncCalibFromConfig(); refreshVarList();
   const s=document.getElementById('cfgstatus'); s.textContent="✔ Configuración guardada."; s.style.color="var(--ok)";
 }
 function resetConfig(){
   if(!confirm("¿Volver a los valores por defecto?")) return;
-  commands={...COMMANDS_DEFAULT}; pinText=PIN_DEFAULT; parsePins(pinText,true); fillConfigFields();
+  commands={...COMMANDS_DEFAULT}; pinText=PIN_DEFAULT; parsePins(pinText,true);
+  pusherMode=false; pusherRetract=5; fillConfigFields();
+  syncCalibFromConfig(); activeVar=null;
+  const va=document.getElementById('varActive'); if(va) va.textContent="—";
+  const vn=document.getElementById('varName'); if(vn) vn.value="";
+  refreshVarList();
   const s=document.getElementById('cfgstatus'); s.textContent="Valores restaurados (recuerda Guardar)."; s.style.color="var(--muted)";
 }
 
 window.addEventListener('DOMContentLoaded',()=>{
   if(!('serial' in navigator)) document.getElementById('unsupported').style.display='block';
   loadConfig(); buildKeypad(); fillConfigFields();
+  syncCalibFromConfig(); buildCalibSelector(); updateDRO(); refreshVarList();
   document.getElementById('btnConnect').onclick=()=>{ connected?disconnect():connect(); };
   document.getElementById('btnEstop').onclick=emergency;
   document.getElementById('btnClear').onclick=()=>{ document.getElementById('console').innerHTML=''; };
   document.getElementById('btnSave').onclick=saveConfig;
   document.getElementById('btnReset').onclick=resetConfig;
-  document.querySelectorAll('.opbtn').forEach(b=>b.onclick=()=>runCommand(b.dataset.cmd));
+  document.getElementById('optPusher').addEventListener('change',()=>{ readOptionsUI(); saveConfigToStorage(); });
+  document.getElementById('optRetract').addEventListener('change',()=>{ readOptionsUI(); saveConfigToStorage(); });
+  document.querySelectorAll('.opbtn[data-cmd]').forEach(b=>b.onclick=()=>runCommand(b.dataset.cmd));
+  // Calibración manual
+  document.querySelectorAll('.jbtn[data-axis]').forEach(b=>b.onclick=()=>jog(b.dataset.axis, parseInt(b.dataset.dir,10), b));
+  document.getElementById('btnGoto').onclick=gotoSaved;
+  document.getElementById('btnSavePos').onclick=savePosition;
+  document.getElementById('btnGen').onclick=generateCoords;
+  document.getElementById('btnCopy').onclick=copyCoords;
+  document.getElementById('btnDownload').onclick=downloadTxt;
+  document.getElementById('btnApply').onclick=applyToConfig;
+  // Variables personalizadas
+  document.getElementById('btnVarCreate').onclick=createOrSelectVar;
+  document.getElementById('btnVarGoto').onclick=gotoVar;
+  document.getElementById('btnSaveVar').onclick=saveVarPosition;
+  document.getElementById('btnVarGen').onclick=generateVarCoords;
+  document.getElementById('btnVarCopy').onclick=copyVarCoords;
+  document.getElementById('btnVarDownload').onclick=downloadVarCoords;
+  document.getElementById('btnVarApply').onclick=applyVarToConfig;
+  document.getElementById('varName').addEventListener('keydown',e=>{ if(e.key==='Enter') createOrSelectVar(); });
   document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     document.getElementById('page-'+t.dataset.tab).classList.add('active');
+    if(t.dataset.tab==='vars') refreshVarList();
+    if(t.dataset.tab==='calib') refreshCalibDots();
   });
   log("Listo. Pulsa CONECTAR y elige el puerto de la CNC.","evt");
 });

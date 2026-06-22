@@ -38,6 +38,52 @@ USO
 - CONFIGURACIÓN: edita comandos y coordenadas; "Guardar" los conserva en
   ese navegador (localStorage).
 
+PESTAÑA "CALIBRACIÓN MANUAL"
+----------------------------
+  Flujo para recalibrar las posiciones de las teclas PIN:
+  1. Conéctate y ve a la pestaña CALIBRACIÓN MANUAL.
+  2. Selecciona la tecla a calibrar (1..0, CANCELAR, ACEPTAR). Se resalta.
+  3. Pulsa "IR A POSICIÓN GUARDADA" para llevar la máquina a su posición actual.
+  4. Ajusta fino con las flechas X/Y y Z+/Z- (elige Paso y Velocidad arriba).
+     El bloque "POSICIÓN EN VIVO" muestra X/Y/Z en tiempo real (coordenada de
+     trabajo, la misma que usan los G0).
+  5. Cuando esté perfecto, pulsa "GUARDAR POSICIÓN" (la tecla queda con un
+     puntito verde).
+  6. Repite con cada tecla. Al final pulsa "GENERAR COORDENADAS":
+       - Copiar / Descargar .txt  -> para pegar en config o en IntelliJ.
+       - Aplicar a Config         -> lo deja directo en la pestaña Configuración.
+  Nota: ACEPTAR se guarda con la clave "CONTINUAR" en el JSON, igual que tu
+  formato original.
+
+PESTAÑA "VARIABLES"
+-------------------
+  Para crear coordenadas con nombre libre (ej. BOTON_CUOTAS), aparte de las
+  teclas PIN:
+  1. Escribe el nombre y pulsa "Crear / Seleccionar".
+     - Los espacios se convierten en "_" automáticamente.
+     - Si el nombre ya existe, te avisa y la selecciona para editar.
+  2. Ubícala con las flechas X/Y y Z (mirando el DRO en vivo).
+  3. Pulsa "GUARDAR POSICIÓN". La variable aparece en la lista "Variables
+     creadas" con su coordenada.
+  4. Para editar una existente: tócala en la lista, pulsa "IR A COORDENADA
+     GUARDADA", ajústala y vuelve a guardar. El 🗑 la elimina.
+  5. "GENERAR COORDENADAS" produce el JSON COMPLETO (teclas PIN + tus
+     variables) para Copiar, Descargar .txt o "Aplicar a Config".
+  Tus variables quedan dentro del mismo JSON, así que también las ves y
+  editas en "COORDENADAS DE PIN" de la pestaña Configuración.
+
+OPCIÓN "ACTUAR COMO PULSADOR" (pestaña Configuración)
+-----------------------------------------------------
+  Al activarla, los movimientos a una coordenada (teclas numéricas del Main,
+  e "Ir a posición/coordenada guardada" en Calibración Manual y Variables)
+  se hacen como una pulsación:
+    1) mueve X/Y, 2) baja a la Z guardada, 3) sube la "Retracción Z (mm)"
+    (por defecto 5 mm) para despegar de la tecla.
+  Apagada, el movimiento es directo (X/Y/Z de una vez), como antes.
+  Nota: con el modo activado, tras "Ir a posición" la herramienta queda a
+  Z + retracción (no en la Z exacta guardada). Si vas a recalibrar la
+  profundidad de pulsación, considéralo o apaga el modo mientras calibras.
+
 VENTAJAS
 --------
 - No es un .exe: no lo bloquean las políticas corporativas.
