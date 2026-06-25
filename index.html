@@ -872,6 +872,7 @@ function saveConfig(){
   saveConfigToStorage();
   syncCalibFromConfig(); refreshVarList();
   const s=document.getElementById('cfgstatus'); s.textContent="✔ Configuración guardada."; s.style.color="var(--ok)";
+  alert("✔ Configuración guardada correctamente.");
 }
 function resetConfig(){
   if(!confirm("¿Volver a los valores por defecto?")) return;
